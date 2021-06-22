@@ -35,6 +35,7 @@ def editshow(request, id):
     show_to_update.network= request.POST['network']
     show_to_update.release= request.POST['release']
     show_to_update.desc= request.POST['desc']
+    show_to_update.img= request.POST['img']
     show_to_update.save()
     return redirect('/shows/' + str(show_to_update.id))
 
@@ -43,11 +44,12 @@ def create(request):
         title=request.POST['title'], 
         network=request.POST['network'], 
         release=request.POST['release'],
-        desc=request.POST['desc']
+        desc=request.POST['desc'],
+        img=request.POST['img']
         )
     return redirect('/shows/' + str(new_show.id))
 
 def delete(request, id):
     delete = Show.objects.get(id=id)
     delete.delete()
-    return redirect('shows/')
+    return redirect('/shows')

@@ -5,48 +5,90 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <title>{{ show.title }}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!-- scripts -->
+        <script src="https://kit.fontawesome.com/4087230859.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+
+        <script>
+            $('document').ready(function () {
+                $('i').hover(function () {
+                    $(this).addClass('animate__heartBeat');
+                }, function () {
+                    $(this).removeClass('animate__heartBeat');
+                }
+                );
+                $('form').submit(function (e) {
+                    var formId = this.id,
+                        form = this;
+                    bootbox.alert({
+                        message: "{{ show.title }} has been updated!. You will be redirect shortly",
+                        className: 'animate__animated animate__rubberBand'
+                    });
+                    e.preventDefault();
+                    setTimeout(function () {
+                        form.submit();
+                    }, 2500);
+                });
+
+            });
+        </script>
     </head>
 
     <body>
         <div class="container p-5">
-            <h1 class="text-center">Edit {{ show.title }}</h1> 
-            <a href="/shows" class="offset-3 btn btn-danger">Back</a>
+            <h1 class="text-center">Edit {{ show.title }}</h1>
             <form class=" offset-3 col-6" method="POST" action="/shows/edit/{{ show.id }}">{% csrf_token %}
+                <a href="/shows"><i class="fas fa-backward fa-3x"></i></a>
+
                 <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
                     <input type="text" class="form-control" id="exampleInputEmail1"
                         placeholder="Enter the title of the TVshow" name="title" value="{{show.title}}">
                 </div>
+                {% if show.img %}
+                <h5>Actual image</h5>
+                <img src="{{ show.img }}" height="500px" class="offset-3" style="border-radius: 50px;">
+                {% endif%}
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="exampleInputPassword1">Network</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" name="network" value="{{ show.network }}">
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="network"
+                            value="{{ show.network }}">
                     </div>
                     <div class="form-group col-6">
                         <label for="exampleInputPassword1">Release Date</label>
-                        <input type="date" class="form-control" id="exampleInputPassword1" name="release" value="{{ show.release|date:'Y-m-d' }}">
+                        <input type="date" class="form-control" id="exampleInputPassword1" name="release"
+                            value="{{ show.release|date:'Y-m-d' }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                        style="resize:none" name="desc">{{show.desc}}</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="resize:none"
+                        name="desc">{{show.desc}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="img">Put the URL of an image:</label>
+                    <input type="text" class="form-control" id="img" name="img" value="{{ show.img }}">
                 </div>
                 <div class="text-center form-group mt-5">
-                    <button class="btn-primary btn" type="submit">Submit</button>
+                    <button class="btn-secondary btn" id="update" type="submit">Submit</button>
                 </div>
             </form>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+
     </body>
 
 </html>

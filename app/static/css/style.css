@@ -1,0 +1,34 @@
+
+*{
+    color: black;
+}
+
+body{
+    padding-top: 5rem;
+    background: url("/static/img/background.jpg") no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+#poster{
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 20px;
+    margin: 20px 20px 20px 20px;
+}
+
+.fas{
+    color: black;
+}
+
+.button{
+    display: inline-block;
+    width: 50px;
+}
+
+input[type=search] {
+    border: black solid 2px !important;
+    background-color: white !important;
+    border-radius: 5px !important;
+}
