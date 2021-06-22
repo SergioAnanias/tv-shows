@@ -24,15 +24,18 @@
             <tbody>
                 {% for show in shows %}
                 <tr>
-                    <th scope="row"> {{ show.id }} </th>
+                    <th scope="row"> #{{ show.id }} </th>
                     <td> {{ show.title }} </td>
                     <td> {{ show.network }} </td>
                     <td> {{ show.release }} </td>
-                    <td> <a href="/shows/{{show.id}}/edit"> Edit</a> <a href="/shows/{{show.id}}">View</a> <a href="/{{show.id}}/delete">Delete</a></td>
+                    <td> <a href="/shows/{{show.id}}/edit" class="btn btn-primary"> Edit</a> 
+                        <a href="/shows/{{show.id}}" class="btn btn-secondary">View</a> 
+                        <a href="/shows/{{show.id}}/delete" class="btn btn-danger">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="/shows/new" class="btn btn-secondary"> Create </a>
     </div>
 
 

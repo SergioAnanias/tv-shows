@@ -11,10 +11,10 @@
     </head>
 
     <body>
-
         <div class="container p-5">
-            <h1 class="text-center">Edit {{ show.title }}</h1>
-            <form class=" offset-3 col-6" method="POST" action="/edit">
+            <h1 class="text-center">Edit {{ show.title }}</h1> 
+            <a href="/shows" class="offset-3 btn btn-danger">Back</a>
+            <form class=" offset-3 col-6" method="POST" action="/shows/edit/{{ show.id }}">{% csrf_token %}
                 <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
                     <input type="text" class="form-control" id="exampleInputEmail1"

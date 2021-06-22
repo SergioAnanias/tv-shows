@@ -13,10 +13,10 @@
     <body>
         <div class="container p-5">
             <h1 class="text-center">Add a new title</h1>
-            <form class=" offset-3 col-6" method="POST" action="">
+            <form class=" offset-3 col-6" method="POST" action="/shows/create"> {% csrf_token %}
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Title</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1"
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title"
                         placeholder="Enter the title of the TVshow" name="title">
                 </div>
                 <div class="row">

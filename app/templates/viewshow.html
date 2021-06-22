@@ -12,6 +12,7 @@
 
     <body>
         <div class="container p-5">
+            <a href="/shows" class="mx-0 btn btn-danger">Back</a></td>
             <h1> {{ show.title }} </h1>
             <div class="col-5 mt-3">
                 <ul>
@@ -21,9 +22,14 @@
                     <li>Description: {{ show.desc }}</li>
                 </ul>
             </div>
-            <a href="shows/{{show.id}}/edit/" class="mt-3">Edit</a>
+            <div class="row">
+                <a href="/shows/{{show.id}}/edit" class="col-6 btn btn-secondary">Edit</a>
+                <a href="/shows/{{show.id}}/delete" class="col-6 btn btn-danger">Delete</a></td>
+            </div>
             <h5 class="mt-3">Last updated: {{ show.updated_at }}</h5>
         </div>
+
+
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
