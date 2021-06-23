@@ -13,16 +13,17 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <script src="https://kit.fontawesome.com/4087230859.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
+
+
 
         <script>
             $('document').ready(function () {
-            $('i').hover(function () {
-                $(this).addClass('animate__heartBeat');
-            }, function () {
-                $(this).removeClass('animate__heartBeat');
+                $('i').hover(function () {
+                    $(this).addClass('animate__heartBeat');
+                }, function () {
+                    $(this).removeClass('animate__heartBeat');
+                });
             });
-        });
         </script>
     </head>
 
@@ -36,7 +37,7 @@
                     <img src="{{ show.img }}" alt="{{ show.title }} poster" id="poster">
                     {% endif %}
                 </div>
-                <div class="col-5 offset-1 mt-5">
+                <div class="col-5 offset-1 mt-5" id="info">
                     <ul>
                         <li>ID: #{{ show.id }}</li>
                         <li>Network: {{ show.network }}</li>
