@@ -24,5 +24,6 @@ urlpatterns = [
     path('shows/<int:id>/edit', views.edit),
     path('shows/<int:id>/delete', views.delete),
     path('shows/create', views.create),
-    path('shows/edit/<int:id>', views.editshow)
+    path('shows/edit/<int:id>', views.editshow),
+    path('api/shows/create', views.create_ajax)
 ]

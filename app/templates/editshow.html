@@ -25,21 +25,7 @@
                     $(this).addClass('animate__heartBeat');
                 }, function () {
                     $(this).removeClass('animate__heartBeat');
-                }
-                );
-                $('form').submit(function (e) {
-                    var formId = this.id,
-                        form = this;
-                    bootbox.alert({
-                        message: "{{ show.title }} has been updated!. You will be redirect shortly",
-                        className: 'animate__animated animate__rubberBand'
-                    });
-                    e.preventDefault();
-                    setTimeout(function () {
-                        form.submit();
-                    }, 2500);
                 });
-
             });
         </script>
     </head>
