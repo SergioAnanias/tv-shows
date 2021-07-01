@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Show
 from django.contrib import messages
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -59,6 +60,29 @@ def create(request):
                 )
             messages.success(request, "Success")
             return redirect('/shows/' + str(new_show.id))
+
+def create_ajax(request):
+    print(request.POST)
+    errors = Show.objects.validator(request.POST)
+    msgs = []
+    if len(errors) > 0:
+        for k, v in errors.items():
+            msgs.append(v)
+    if len(msgs) > 0:
+        print(msgs)
+        return JsonResponse({'msgs':msgs}, status=400)
+    else:
+        if request.method == 'POST':
+            new_show = Show.objects.create(
+                title=request.POST['title'], 
+                network=request.POST['network'], 
+                release=request.POST['release'],
+                desc=request.POST['desc'],
+                img=request.POST['img']
+                )
+            messages.success(request, "Success")
+            return redirect('/shows/' + str(new_show.id))
+
 
 def delete(request, id):
     delete = Show.objects.get(id=id)

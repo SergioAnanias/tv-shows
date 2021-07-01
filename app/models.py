@@ -19,7 +19,7 @@ class ShowManager(models.Manager):
         if post_Data['release'] == '':
             errors['release'] = "You must add a date"
         if post_Data['release'] != '':
-            release=datetime.strptime(post_Data['release'], '%Y-%m-%d') 
+            release=datetime.strptime(post_Data['release'], '%Y-%m-%d')
             if release >= now:
                 errors['release']= "The date is not valid"
         if len(post_Data['network']) < 3:

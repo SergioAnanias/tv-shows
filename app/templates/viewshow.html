@@ -7,6 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ show.title }}</title>
         {% load static %}
+        
+        {# STYLES #}
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
@@ -14,7 +16,8 @@
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <link rel="stylesheet" href="{% static 'css/tipped.css' %}">
         <link rel="stylesheet" href="{% static 'css/toastr.min.css' %}"> 
-        {% load static %}
+        
+        {# SCRIPTS #}
         <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
         <script src="{% static 'js/fontawesome.js' %}"></script>
         <script src="{% static 'js/less.min.js' %}"></script>
@@ -56,10 +59,10 @@
                 </div>
                 <div class="col-5 offset-1 mt-5" id="info">
                     <ul>
-                        <li>ID: #{{ show.id }}</li>
-                        <li>Network: {{ show.network }}</li>
-                        <li>Release: {{ show.release }}</li>
-                        <li>Description: {{ show.desc }}</li>
+                        <li>ID:#{{ show.id }}</li>
+                        <li>Network:{{ show.network }}</li>
+                        <li>Release:{{ show.release }}</li>
+                        <li>Description:{{ show.desc }}</li>
                     </ul>
                 </div>
 
